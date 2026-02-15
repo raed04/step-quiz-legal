@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TikTok Authorization</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 500px; margin: 80px auto; padding: 0 20px; text-align: center; color: #333; }
+        h2 { color: #1a1a2e; }
+        code { background: #f0f0f0; padding: 2px 8px; border-radius: 4px; font-size: 1.1em; }
+        .box { border: 2px solid #22c55e; border-radius: 8px; padding: 20px; margin: 20px 0; background: #f0fdf4; }
+    </style>
+</head>
+<body>
+    <h2>TikTok Authorized!</h2>
+    <div class="box">
+        <p>Copy this code and paste it in your terminal:</p>
+        <code id="code"></code>
+    </div>
+    <p style="color:#666; font-size:0.9em;">You can close this tab after pasting the code.</p>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const el = document.getElementById('code');
+        if (code) {
+            el.textContent = code;
+        } else {
+            el.textContent = 'Error: ' + (params.get('error') || 'no code received');
+            el.style.color = 'red';
+        }
+    </script>
+</body>
+</html>
